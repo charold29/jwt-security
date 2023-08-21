@@ -3,7 +3,7 @@ package com.charoldev.security.controller;
 import com.charoldev.security.dto.AuthRequestDTO;
 import com.charoldev.security.dto.AuthResponseDTO;
 import com.charoldev.security.dto.RegisterRequestDTO;
-import com.charoldev.security.service.AuthService;
+import com.charoldev.security.service.impl.AuthServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthService authService;
+    private final AuthServiceImpl authService;
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDTO> register(
         @RequestBody RegisterRequestDTO request

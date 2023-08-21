@@ -45,7 +45,10 @@ public class AuthServiceImpl implements AuthService {
                 request.getPassword()
             )
         );
-        var user = userRepository.findByEmail(request.getEmail()).orElseThrow(    );
-        return null;
+        var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthResponseDTO.builder()
+            .token(jwtToken)
+            .build();
     }
 }
