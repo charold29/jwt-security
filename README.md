@@ -16,7 +16,7 @@ Asegúrate de tener instalado:
 
 ## Base de Datos
 
-Por defecto, se está utilizando una base de datos en memoria H2 para simplificar el ejemplo. Puedes modificar la configuración de la base de datos en el archivo `application.properties`.
+Se está utilizando una base de datos PostgresSQL dockerizada. Puedes modificar la configuración de la base de datos en el archivo `application.properties`.
 
 ## Rutas HTTP
 
@@ -63,8 +63,4 @@ Este proyecto se basa en los conocimientos y tutoriales disponibles en línea so
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más información.
-
----
-
-¡No olvides personalizar el README con detalles específicos de tu proyecto y configuración!
+Este proyecto está con la Licencia MIT. Consulta el archivo `LICENSE` para más información.
