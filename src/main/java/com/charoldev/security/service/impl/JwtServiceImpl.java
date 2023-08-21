@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@Slf4j
 public class JwtServiceImpl implements JwtService {
     private static final String SECRET_KEY = "5367566B59703373357638792F423F4528482B4D6251655468576D5A71347437";
     public String extractUsername(String token) {
@@ -43,6 +45,7 @@ public class JwtServiceImpl implements JwtService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
+        log.debug("Generated Token: {}", token);
         return token;
     }
 
@@ -60,12 +63,14 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts
+        var claims = Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
+        log.info("Extracted claims: {}", claims);
+        return claims;
     }
 
     private Key getSignInKey() {
