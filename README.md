@@ -1,5 +1,3 @@
-¡Por supuesto! Aquí tienes un ejemplo básico de un README para tu proyecto de Spring con autenticación JWT y dos rutas HTTP para registrarse y autenticarse:
-
 # Proyecto de Autenticación JWT con Spring
 
 Este proyecto es un ejemplo básico de cómo implementar la autenticación JWT en una aplicación web utilizando el framework Spring.
